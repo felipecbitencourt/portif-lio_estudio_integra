@@ -18,9 +18,23 @@
   --line: #E1DCCE;
   --line-2: #CFC8B5;
 
-  --accent: #C9F25C;        /* lima vibrante, jovem */
+  --accent: #C9F25C;        /* lima vibrante, jovem — cor da marca/home */
   --accent-ink: #14140F;
   --accent-deep: #84A828;
+
+  /* Cor por pilar — sobrescreve --accent na página correspondente */
+  --pillar-01: #F4A78A;     /* coral — Pedagogia */
+  --pillar-01-deep: #C95E3F;
+  --pillar-02: #7FD8E4;     /* ciano — Tecnologias */
+  --pillar-02-deep: #1E8A99;
+  --pillar-03: #F5B8D9;     /* rosa pó — Design */
+  --pillar-03-deep: #B85A8E;
+  --pillar-04: #FFB04D;     /* âmbar — Recursos */
+  --pillar-04-deep: #C97A1A;
+  --pillar-05: #9BB8FF;     /* azul céu — Acessibilidade */
+  --pillar-05-deep: #3F6BC7;
+  --pillar-06: #D4A8FF;     /* lilás — Produtos */
+  --pillar-06-deep: #7E4FB8;
 
   --warn: #E8553C;
   --info: #2E5BFF;
@@ -57,6 +71,14 @@
   --line: #2A2C20;
   --line-2: #3D4030;
 }
+
+/* Cor característica por pilar — herda em cascata via --accent */
+body[data-screen-label^="01"] { --accent: var(--pillar-01); --accent-deep: var(--pillar-01-deep); }
+body[data-screen-label^="02"] { --accent: var(--pillar-02); --accent-deep: var(--pillar-02-deep); }
+body[data-screen-label^="03"] { --accent: var(--pillar-03); --accent-deep: var(--pillar-03-deep); }
+body[data-screen-label^="04"] { --accent: var(--pillar-04); --accent-deep: var(--pillar-04-deep); }
+body[data-screen-label^="05"] { --accent: var(--pillar-05); --accent-deep: var(--pillar-05-deep); }
+body[data-screen-label^="06"] { --accent: var(--pillar-06); --accent-deep: var(--pillar-06-deep); }
 
 /* Reset essencial */
 *, *::before, *::after { box-sizing: border-box; }
@@ -375,9 +397,51 @@ small, .small { font-size: 12.5px; color: var(--ink-3); }
   opacity: 0;
   transition: opacity 220ms var(--ease);
 }
+.pillar-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--pillar-color, var(--accent));
+  transform: scaleY(0.2);
+  transform-origin: center;
+  opacity: 0;
+  transition: opacity 220ms var(--ease), transform 260ms var(--ease);
+}
 .pillar-card:hover::after { opacity: 1; }
+.pillar-card:hover::before { opacity: 1; transform: scaleY(1); }
 .pillar-card:hover { padding-left: 16px; padding-right: 16px; }
 .pillar-card:hover .pillar-arrow { transform: translateX(6px); }
+
+/* Cor do filete por posição na grade da home */
+.pillars > .pillar-card:nth-child(1) { --pillar-color: var(--pillar-01); }
+.pillars > .pillar-card:nth-child(2) { --pillar-color: var(--pillar-02); }
+.pillars > .pillar-card:nth-child(3) { --pillar-color: var(--pillar-03); }
+.pillars > .pillar-card:nth-child(4) { --pillar-color: var(--pillar-04); }
+.pillars > .pillar-card:nth-child(5) { --pillar-color: var(--pillar-05); }
+.pillars > .pillar-card:nth-child(6) { --pillar-color: var(--pillar-06); }
+/* No hover, o arrow do card pega a cor do filete também */
+.pillars > .pillar-card:hover .pillar-arrow,
+.pillar-card--next:hover .pillar-arrow {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--pillar-color, var(--accent));
+}
+
+/* Card "Próximo pilar" — antecipa a cor do pilar seguinte */
+.pillar-card--next-01 { --pillar-color: var(--pillar-01); }
+.pillar-card--next-02 { --pillar-color: var(--pillar-02); }
+.pillar-card--next-03 { --pillar-color: var(--pillar-03); }
+.pillar-card--next-04 { --pillar-color: var(--pillar-04); }
+.pillar-card--next-05 { --pillar-color: var(--pillar-05); }
+.pillar-card--next-06 { --pillar-color: var(--pillar-06); }
+.pillar-card--next-brand { --pillar-color: #C9F25C; }
+/* Filete sempre visível no card de antecipação (sem esperar hover) */
+.pillar-card--next::before { opacity: 1; transform: scaleY(1); }
+.pillar-card--next .pillar-num { color: var(--pillar-color, var(--accent-deep)); }
 
 .pillar-num {
   font-family: var(--font-mono);
@@ -439,7 +503,8 @@ small, .small { font-size: 12.5px; color: var(--ink-3); }
 .card .num {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--ink-4);
+  color: var(--accent-deep);
+  font-weight: 600;
   letter-spacing: 0.1em;
 }
 .card h3 { margin-top: 14px; }
@@ -467,6 +532,10 @@ small, .small { font-size: 12.5px; color: var(--ink-3); }
   gap: 24px;
   align-items: baseline;
   margin-bottom: 32px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--accent);
+  width: max-content;
+  max-width: 100%;
 }
 .pillar-hero .index-pill {
   font-family: var(--font-mono);
@@ -515,7 +584,8 @@ small, .small { font-size: 12.5px; color: var(--ink-3); }
 .practice .pn {
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--ink-4);
+  font-weight: 600;
+  color: var(--accent-deep);
   padding-top: 4px;
 }
 .practice h3 { margin-bottom: 6px; }
@@ -532,9 +602,22 @@ small, .small { font-size: 12.5px; color: var(--ink-3); }
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   padding: 20px 22px;
-  transition: border-color 180ms var(--ease);
+  transition: border-color 180ms var(--ease), color 180ms var(--ease), transform 180ms var(--ease);
+  position: relative;
 }
-.concept:hover { border-color: var(--ink); }
+.concept::before {
+  content: "";
+  position: absolute;
+  left: -1px; top: 18px; bottom: 18px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 180ms var(--ease);
+}
+.concept:hover { border-color: var(--accent-deep); transform: translateY(-1px); }
+.concept:hover::before { opacity: 1; }
+.concept:hover .name { color: var(--accent-deep); }
 .concept .name {
   font-family: var(--font-serif);
   font-size: 22px;
@@ -542,6 +625,7 @@ small, .small { font-size: 12.5px; color: var(--ink-3); }
   color: var(--ink);
   margin-bottom: 4px;
   letter-spacing: -0.01em;
+  transition: color 180ms var(--ease);
 }
 .concept .desc { font-size: 14px; color: var(--ink-3); }
 
@@ -680,7 +764,9 @@ small, .small { font-size: 12.5px; color: var(--ink-3); }
   border-radius: 999px;
   background: var(--paper);
   color: var(--ink-2);
+  transition: border-color 160ms var(--ease), color 160ms var(--ease);
 }
+.tag-list li:hover { border-color: var(--accent-deep); color: var(--accent-deep); }
 
 /* ============== Responsive ============== */
 
