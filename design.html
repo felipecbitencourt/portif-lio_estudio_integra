@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pilar 03 · Design — Estudio Aprende</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body data-screen-label="03 Design">
+  <header class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">EA</span>Estudio Aprende <i>/ portfolio</i></a>
+      <nav aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a href="index.html"><span class="num">00</span> Início</a></li>
+          <li><a href="desenho-psico-pedagogico.html"><span class="num">01</span> Pedagogia</a></li>
+          <li><a href="tecnologias.html"><span class="num">02</span> Tecnologias</a></li>
+          <li><a href="design.html" aria-current="page"><span class="num">03</span> Design</a></li>
+          <li><a href="midias-recursos.html"><span class="num">04</span> Mídias</a></li>
+          <li><a href="acessibilidade.html"><span class="num">05</span> Acessibilidade</a></li>
+        </ul>
+      </nav>
+      <a href="index.html#contato" class="nav-cta">Conversar →</a>
+      <button class="menu-toggle" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="shell pillar-hero">
+      <div class="meta">
+        <span class="index-pill">Pilar 03 / 05</span>
+        <span class="eyebrow">Design</span>
+      </div>
+      <h1>Design é<br/><em>sistema</em> de decisão,<br/>não <span class="accent">estética</span> isolada.</h1>
+      <p class="lede">
+        Organizamos a experiência de aprendizagem com decisões que orientam leitura, navegação, compreensão e retenção. Reduzir fricção, ampliar clareza, sustentar consistência.
+      </p>
+    </section>
+
+    <!-- Demo: hierarquia visual antes/depois -->
+    <section class="shell" style="padding: clamp(40px, 6vw, 80px) 0;">
+      <span class="eyebrow">Demonstração · Hierarquia visual</span>
+      <h2 style="margin: 14px 0 8px;">Mesma informação,<br/><em>duas leituras</em>.</h2>
+      <p class="lede" style="margin-bottom: 32px;">Use o controle para ver como tamanho, peso, contraste e espaçamento mudam o que sua atenção captura primeiro.</p>
+
+      <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+          <span class="kicker"><span class="dot"></span> Estado: <span id="state-label">sem hierarquia</span></span>
+          <label style="display: inline-flex; align-items: center; gap: 12px; cursor: pointer;">
+            <span class="small">Antes</span>
+            <input type="range" id="hier" min="0" max="100" value="0" step="1" style="width: 240px;" />
+            <span class="small">Depois</span>
+          </label>
+        </div>
+
+        <div id="hier-demo" class="card" style="padding: 36px; min-height: 380px; transition: padding 200ms;">
+          <div id="h-eyebrow" style="font-family: var(--font-mono); font-size: 13px; color: var(--ink-2); letter-spacing: 0; transition: all 240ms;">MÓDULO 03 — SEGURANÇA OPERACIONAL</div>
+          <div id="h-title" style="font-family: var(--font-sans); font-size: 16px; font-weight: 400; color: var(--ink-2); margin: 4px 0; transition: all 240ms;">Como identificar e mitigar riscos em rotinas de trabalho com cargas suspensas</div>
+          <div id="h-desc" style="font-size: 16px; color: var(--ink-2); margin: 4px 0; transition: all 240ms;">Este módulo trata da identificação de fatores de risco, sinalização de área e checklist de uso de EPIs antes do início da operação. Ao final você será capaz de aplicar a sequência completa em campo.</div>
+          <div id="h-meta" style="font-size: 16px; color: var(--ink-2); margin: 4px 0; transition: all 240ms;">12 minutos · 3 atividades · checkpoint</div>
+          <div id="h-cta" style="margin-top: 12px; transition: all 240ms;">
+            <button class="btn btn--ghost" style="font-size: 14px;">Iniciar módulo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell split">
+      <div class="label">
+        <span class="eyebrow">Como aplicamos</span>
+        <h2>Sistema antes de tela.</h2>
+      </div>
+      <div class="practices">
+        <div class="practice"><div class="pn">D.01</div><div><h3>Design como sistema</h3><p>Padrões de interface e comunicação visual mantêm unidade entre telas, módulos e projetos — aumentando previsibilidade para o usuário.</p></div></div>
+        <div class="practice"><div class="pn">D.02</div><div><h3>Hierarquia de informação</h3><p>Níveis claros de prioridade visual: identificar mensagens principais, navegar por blocos, ler rapidamente com compreensão progressiva.</p></div></div>
+        <div class="practice"><div class="pn">D.03</div><div><h3>Legibilidade e ritmo</h3><p>Tipografia, espaçamento, contraste e densidade trabalhados para conforto em diferentes contextos.</p></div></div>
+        <div class="practice"><div class="pn">D.04</div><div><h3>UX educacional</h3><p>Cada elemento interativo apoia objetivo pedagógico, contexto de uso e perfil — não estética isolada.</p></div></div>
+        <div class="practice"><div class="pn">D.05</div><div><h3>Responsividade</h3><p>Layouts e componentes adaptáveis a diferentes telas, preservando consistência de experiência.</p></div></div>
+      </div>
+    </section>
+
+    <section class="shell split">
+      <div class="label">
+        <span class="eyebrow">Conceitos estruturantes</span>
+        <h2>Princípios de UX que sustentam o sistema.</h2>
+      </div>
+      <div class="concepts">
+        <div class="concept"><div class="name">Hierarquia visual</div><div class="desc">Tamanho, peso, contraste e espaçamento orientam atenção e priorização.</div></div>
+        <div class="concept"><div class="name">Leis da Gestalt</div><div class="desc">Proximidade, similaridade e continuidade facilitam leitura de blocos.</div></div>
+        <div class="concept"><div class="name">Carga cognitiva</div><div class="desc">Redução de ruído visual e segmentação evitam sobrecarga.</div></div>
+        <div class="concept"><div class="name">Progressive disclosure</div><div class="desc">Apresentação gradual mantém foco no passo atual da jornada.</div></div>
+        <div class="concept"><div class="name">Affordance e feedback</div><div class="desc">Controles parecem clicáveis e respondem de forma clara a cada ação.</div></div>
+        <div class="concept"><div class="name">Consistência de UX</div><div class="desc">Repetição de padrões reduz curva de aprendizado.</div></div>
+      </div>
+    </section>
+
+    <section class="shell" style="padding-bottom: 64px;">
+      <a class="pillar-card" href="midias-recursos.html">
+        <div class="pillar-num">Próximo · 04 / 05</div>
+        <div class="pillar-body">
+          <h3>Mídias e recursos</h3>
+          <p>Vídeo, áudio, gráficos e interações — cada formato escolhido pelo ganho didático.</p>
+        </div>
+        <span class="pillar-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="shell">
+      <div class="foot-bottom" style="margin-top: 0; padding-top: 0; border-top: 0;">
+        <span>© 2026 Estudio Aprende · Pilar 03 / 05</span>
+        <span><a href="index.html">← voltar ao início</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Hierarchy demo: morph type styles based on slider value
+    const slider = document.getElementById('hier');
+    const stateLabel = document.getElementById('state-label');
+    const eyebrow = document.getElementById('h-eyebrow');
+    const title = document.getElementById('h-title');
+    const desc = document.getElementById('h-desc');
+    const meta = document.getElementById('h-meta');
+    const cta = document.getElementById('h-cta');
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function update() {
+      const t = slider.value / 100;
+      // Eyebrow: monocromático -> letter-spaced colored kicker
+      eyebrow.style.fontSize = `${lerp(13, 11, t)}px`;
+      eyebrow.style.letterSpacing = `${lerp(0, 0.14, t)}em`;
+      eyebrow.style.textTransform = t > 0.3 ? 'uppercase' : 'none';
+      eyebrow.style.color = t > 0.3 ? 'var(--ink-3)' : 'var(--ink-2)';
+      // Title: small sans -> large serif
+      const titleSize = lerp(16, 44, t);
+      title.style.fontSize = `${titleSize}px`;
+      title.style.fontFamily = t > 0.5 ? 'var(--font-serif)' : 'var(--font-sans)';
+      title.style.fontWeight = t > 0.5 ? '400' : '400';
+      title.style.lineHeight = `${lerp(1.5, 1.05, t)}`;
+      title.style.color = 'var(--ink)';
+      title.style.marginTop = `${lerp(4, 16, t)}px`;
+      title.style.marginBottom = `${lerp(4, 14, t)}px`;
+      // Desc: same -> smaller, muted, narrower
+      desc.style.fontSize = `${lerp(16, 15, t)}px`;
+      desc.style.color = t > 0.4 ? 'var(--ink-3)' : 'var(--ink-2)';
+      desc.style.maxWidth = t > 0.5 ? '56ch' : 'none';
+      desc.style.lineHeight = `${lerp(1.4, 1.55, t)}`;
+      // Meta: same -> mono pill
+      meta.style.fontSize = `${lerp(16, 12, t)}px`;
+      meta.style.fontFamily = t > 0.5 ? 'var(--font-mono)' : 'var(--font-sans)';
+      meta.style.color = 'var(--ink-4)';
+      meta.style.marginTop = `${lerp(4, 18, t)}px`;
+      meta.style.letterSpacing = `${lerp(0, 0.05, t)}em`;
+      // CTA spacing
+      cta.style.marginTop = `${lerp(12, 28, t)}px`;
+      const btn = cta.querySelector('button');
+      if (t > 0.6) {
+        btn.classList.remove('btn--ghost');
+      } else {
+        btn.classList.add('btn--ghost');
+      }
+      stateLabel.textContent = t < 0.15 ? 'sem hierarquia' : t < 0.5 ? 'em transição' : t < 0.85 ? 'hierarquia clara' : 'sistema completo';
+    }
+    slider.addEventListener('input', update);
+    update();
+  </script>
+</body>
+</html>

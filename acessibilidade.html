@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pilar 05 · Acessibilidade — Estudio Aprende</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* Toggles para o painel de acessibilidade ao vivo */
+    body.a11y-bionic p, body.a11y-bionic .lede, body.a11y-bionic li {
+      /* simulação simples: aplicada via JS por palavras */
+    }
+    body.a11y-dyslexic { font-family: "Comic Sans MS", "Trebuchet MS", "Verdana", sans-serif !important; }
+    body.a11y-dyslexic h1, body.a11y-dyslexic h2, body.a11y-dyslexic h3 { font-family: "Comic Sans MS", "Trebuchet MS", "Verdana", sans-serif !important; letter-spacing: 0; }
+    body.a11y-contrast { --bg: #FFF; --bg-elev: #FFF; --paper: #FFF; --ink: #000; --ink-2: #000; --ink-3: #000; --ink-4: #000; --line: #000; --line-2: #000; --accent: #FFEB00; --accent-ink: #000; }
+    body.a11y-contrast a { text-decoration: underline; }
+    [data-theme="dark"] body { background: var(--bg); color: var(--ink); }
+    .bionic b { font-weight: 700; color: var(--ink); }
+  </style>
+</head>
+<body data-screen-label="05 Acessibilidade">
+  <header class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">EA</span>Estudio Aprende <i>/ portfolio</i></a>
+      <nav aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a href="index.html"><span class="num">00</span> Início</a></li>
+          <li><a href="desenho-psico-pedagogico.html"><span class="num">01</span> Pedagogia</a></li>
+          <li><a href="tecnologias.html"><span class="num">02</span> Tecnologias</a></li>
+          <li><a href="design.html"><span class="num">03</span> Design</a></li>
+          <li><a href="midias-recursos.html"><span class="num">04</span> Mídias</a></li>
+          <li><a href="acessibilidade.html" aria-current="page"><span class="num">05</span> Acessibilidade</a></li>
+        </ul>
+      </nav>
+      <a href="index.html#contato" class="nav-cta">Conversar →</a>
+      <button class="menu-toggle" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="shell pillar-hero">
+      <div class="meta">
+        <span class="index-pill">Pilar 05 / 05</span>
+        <span class="eyebrow">Acessibilidade</span>
+      </div>
+      <h1>Acessibilidade<br/>é <em>critério</em>,<br/>não <span class="accent">extra</span>.</h1>
+      <p class="lede" id="hero-lede">
+        Garantir que os materiais possam ser utilizados por mais pessoas, em diferentes condições, com autonomia e segurança. Tratamos acessibilidade como critério técnico e responsabilidade profissional.
+      </p>
+    </section>
+
+    <!-- DEMO ao vivo -->
+    <section class="shell" style="padding: clamp(40px, 6vw, 80px) 0;">
+      <span class="eyebrow">Demonstração · Painel ao vivo</span>
+      <h2 style="margin: 14px 0 8px;">Aplique <em>nesta página</em>, agora.</h2>
+      <p class="lede" style="margin-bottom: 32px;">Os ajustes abaixo são os mesmos que entregamos modularmente em projetos. Toque para ativar e veja o efeito imediato no conteúdo desta página.</p>
+
+      <div id="a11y-panel" class="card" style="padding: 32px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+          <button class="a11y-btn" data-action="font" data-state="0" type="button">
+            <span class="lbl">Tamanho de fonte</span>
+            <span class="val" data-val="font">100%</span>
+          </button>
+          <button class="a11y-btn" data-action="contrast" type="button">
+            <span class="lbl">Alto contraste</span>
+            <span class="val" data-val="contrast">desligado</span>
+          </button>
+          <button class="a11y-btn" data-action="dark" type="button">
+            <span class="lbl">Modo escuro</span>
+            <span class="val" data-val="dark">desligado</span>
+          </button>
+          <button class="a11y-btn" data-action="dyslexic" type="button">
+            <span class="lbl">Fonte assistiva</span>
+            <span class="val" data-val="dyslexic">desligado</span>
+          </button>
+          <button class="a11y-btn" data-action="bionic" type="button">
+            <span class="lbl">Leitura biônica</span>
+            <span class="val" data-val="bionic">desligado</span>
+          </button>
+          <button class="a11y-btn" data-action="tts" type="button">
+            <span class="lbl">Ler em voz alta</span>
+            <span class="val" data-val="tts">parado</span>
+          </button>
+          <button class="a11y-btn" data-action="libras" type="button">
+            <span class="lbl">VLibras</span>
+            <span class="val" data-val="libras">desligado</span>
+          </button>
+          <button class="a11y-btn" data-action="reset" type="button" style="background: var(--ink); color: var(--bg);">
+            <span class="lbl" style="color: color-mix(in oklab, var(--bg) 65%, var(--ink));">Restaurar tudo</span>
+            <span class="val">↺</span>
+          </button>
+        </div>
+        <p class="small" style="margin-top: 18px;">Os recursos podem ser implementados de forma modular conforme o escopo do projeto.</p>
+      </div>
+
+      <div id="libras-mock" style="display: none; position: fixed; right: 24px; bottom: 24px; width: 220px; padding: 16px; border-radius: 16px; background: var(--ink); color: var(--bg); border: 1px solid var(--ink); box-shadow: var(--shadow-lg); z-index: 100;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;">VLIBRAS · MOCK</span>
+          <button id="libras-close" style="background: transparent; border: 0; color: var(--bg); cursor: pointer;">✕</button>
+        </div>
+        <div style="aspect-ratio: 1 / 1; background: color-mix(in oklab, var(--accent) 35%, var(--ink)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 60px; color: var(--accent);"><em>VL</em></div>
+        <p style="font-size: 12px; color: color-mix(in oklab, var(--bg) 70%, var(--ink)); margin: 8px 0 0;">Em produção, integramos o widget oficial do VLibras.</p>
+      </div>
+    </section>
+
+    <style>
+      .a11y-btn { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 16px 18px; border: 1px solid var(--line-2); background: var(--bg-elev); color: var(--ink); border-radius: 14px; font: inherit; transition: all 160ms; cursor: pointer; text-align: left; }
+      .a11y-btn:hover { border-color: var(--ink); }
+      .a11y-btn.active { background: var(--accent); border-color: var(--accent-deep); color: var(--accent-ink); }
+      .a11y-btn .lbl { font-size: 13.5px; font-weight: 500; }
+      .a11y-btn .val { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; opacity: 0.7; }
+      .a11y-btn.active .val { opacity: 0.9; }
+    </style>
+
+    <section class="shell split">
+      <div class="label">
+        <span class="eyebrow">Como aplicamos</span>
+        <h2>Práticas embutidas no processo.</h2>
+      </div>
+      <div class="practices">
+        <div class="practice"><div class="pn">A.01</div><div><h3>Estruturação semântica</h3><p>Hierarquia clara de títulos, textos e elementos interativos para tecnologias assistivas.</p></div></div>
+        <div class="practice"><div class="pn">A.02</div><div><h3>Navegação por teclado</h3><p>Interações utilizáveis sem dependência exclusiva de mouse, com fluxo previsível.</p></div></div>
+        <div class="practice"><div class="pn">A.03</div><div><h3>Contraste e legibilidade</h3><p>Combinações visuais que favorecem leitura em diferentes contextos de iluminação e dispositivo.</p></div></div>
+        <div class="practice"><div class="pn">A.04</div><div><h3>Alternativas textuais</h3><p>Texto alternativo em imagens relevantes e legendas em conteúdos audiovisuais quando aplicável.</p></div></div>
+        <div class="practice"><div class="pn">A.05</div><div><h3>Feedback de interface</h3><p>Indicações claras de foco, seleção, erro e progresso — reduzindo ambiguidade de uso.</p></div></div>
+      </div>
+    </section>
+
+    <section class="shell" style="padding: clamp(56px, 8vw, 96px) 0;">
+      <span class="eyebrow">Recursos modulares</span>
+      <h2 style="margin: 14px 0 32px;">O que podemos<br/><em>plugar</em> ao seu projeto.</h2>
+      <div class="grid-3">
+        <div class="card"><span class="num">R.01</span><h3>Tradução multi-idioma</h3><p>Interface e conteúdo com alternância instantânea e persistência de preferência.</p></div>
+        <div class="card"><span class="num">R.02</span><h3>Painel de fonte e tamanho</h3><p>Ajustes de tipografia para conforto individual.</p></div>
+        <div class="card"><span class="num">R.03</span><h3>Alto contraste e modo escuro</h3><p>Para ambientes diversos e sensibilidade visual.</p></div>
+        <div class="card"><span class="num">R.04</span><h3>Fonte para dislexia</h3><p>OpenDyslexic ou alternativas legíveis como toggle.</p></div>
+        <div class="card"><span class="num">R.05</span><h3>Leitura biônica</h3><p>Apoio a foco atencional via realce dos primeiros caracteres.</p></div>
+        <div class="card"><span class="num">R.06</span><h3>Leitura em voz alta</h3><p>Text-to-speech com controle de voz, volume e velocidade.</p></div>
+        <div class="card"><span class="num">R.07</span><h3>VLibras</h3><p>Tradução automática para Libras integrada à página.</p></div>
+        <div class="card"><span class="num">R.08</span><h3>Legendas e transcrições</h3><p>VTT por módulo e idioma em conteúdos audiovisuais.</p></div>
+        <div class="card"><span class="num">R.09</span><h3>Alvos de toque</h3><p>Áreas clicáveis adequadas para dispositivos móveis (referência mínima).</p></div>
+      </div>
+    </section>
+
+    <section class="section section--ink">
+      <div class="shell">
+        <span class="eyebrow" style="color: rgba(244,241,234,0.65);">WCAG · referência</span>
+        <h2 style="color: var(--bg); margin: 14px 0 12px;">Quatro princípios.<br/><em>Um baseline.</em></h2>
+        <p style="color: color-mix(in oklab, var(--bg) 80%, var(--ink)); max-width: 60ch; margin-bottom: 40px;">A WCAG (Web Content Accessibility Guidelines) orienta os critérios técnicos de implementação e revisão. Quando aplicável ao escopo, trabalhamos com aderência progressiva aos níveis A e AA.</p>
+        <div class="grid-2" style="gap: 20px;">
+          <div style="border: 1px solid color-mix(in oklab, var(--bg) 18%, var(--ink)); border-radius: 16px; padding: 28px;">
+            <h4 style="color: var(--accent);">Perceptível</h4>
+            <p style="color: color-mix(in oklab, var(--bg) 85%, var(--ink)); margin-top: 8px;">Informação acessível por diferentes formas de percepção.</p>
+          </div>
+          <div style="border: 1px solid color-mix(in oklab, var(--bg) 18%, var(--ink)); border-radius: 16px; padding: 28px;">
+            <h4 style="color: var(--accent);">Operável</h4>
+            <p style="color: color-mix(in oklab, var(--bg) 85%, var(--ink)); margin-top: 8px;">Interações navegáveis por teclado, toque e tecnologias assistivas.</p>
+          </div>
+          <div style="border: 1px solid color-mix(in oklab, var(--bg) 18%, var(--ink)); border-radius: 16px; padding: 28px;">
+            <h4 style="color: var(--accent);">Compreensível</h4>
+            <p style="color: color-mix(in oklab, var(--bg) 85%, var(--ink)); margin-top: 8px;">Conteúdo claro, consistente e previsível.</p>
+          </div>
+          <div style="border: 1px solid color-mix(in oklab, var(--bg) 18%, var(--ink)); border-radius: 16px; padding: 28px;">
+            <h4 style="color: var(--accent);">Robusto</h4>
+            <p style="color: color-mix(in oklab, var(--bg) 85%, var(--ink)); margin-top: 8px;">Compatibilidade com navegadores e tecnologias assistivas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell" style="padding: clamp(56px, 8vw, 96px) 0;">
+      <a class="pillar-card" href="index.html">
+        <div class="pillar-num">Voltar · ao início</div>
+        <div class="pillar-body">
+          <h3>Pronto para conversar sobre seu projeto?</h3>
+          <p>Vamos estruturar a proposta a partir do seu contexto, escopo e prioridades.</p>
+        </div>
+        <span class="pillar-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="shell">
+      <div class="foot-bottom" style="margin-top: 0; padding-top: 0; border-top: 0;">
+        <span>© 2026 Estudio Aprende · Pilar 05 / 05</span>
+        <span><a href="index.html">← voltar ao início</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Painel de acessibilidade ao vivo
+    const root = document.documentElement;
+    const body = document.body;
+
+    const FONT_STEPS = [{ label: '100%', size: '16px' }, { label: '115%', size: '18.5px' }, { label: '130%', size: '21px' }, { label: '150%', size: '24px' }];
+    let fontIdx = 0;
+    let states = { contrast: false, dark: false, dyslexic: false, bionic: false, tts: false, libras: false };
+    let utter = null;
+
+    function setVal(key, val) { document.querySelector(`[data-val="${key}"]`).textContent = val; }
+
+    document.querySelectorAll('.a11y-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.dataset.action;
+        if (action === 'font') {
+          fontIdx = (fontIdx + 1) % FONT_STEPS.length;
+          root.style.fontSize = FONT_STEPS[fontIdx].size;
+          setVal('font', FONT_STEPS[fontIdx].label);
+          btn.classList.toggle('active', fontIdx > 0);
+        } else if (action === 'contrast') {
+          states.contrast = !states.contrast;
+          body.classList.toggle('a11y-contrast', states.contrast);
+          if (states.contrast) { states.dark = false; root.removeAttribute('data-theme'); setVal('dark', 'desligado'); document.querySelector('[data-action="dark"]').classList.remove('active'); }
+          setVal('contrast', states.contrast ? 'ligado' : 'desligado');
+          btn.classList.toggle('active', states.contrast);
+        } else if (action === 'dark') {
+          states.dark = !states.dark;
+          if (states.dark) { root.setAttribute('data-theme', 'dark'); body.classList.remove('a11y-contrast'); states.contrast = false; setVal('contrast', 'desligado'); document.querySelector('[data-action="contrast"]').classList.remove('active'); }
+          else { root.removeAttribute('data-theme'); }
+          setVal('dark', states.dark ? 'ligado' : 'desligado');
+          btn.classList.toggle('active', states.dark);
+        } else if (action === 'dyslexic') {
+          states.dyslexic = !states.dyslexic;
+          body.classList.toggle('a11y-dyslexic', states.dyslexic);
+          setVal('dyslexic', states.dyslexic ? 'ligado' : 'desligado');
+          btn.classList.toggle('active', states.dyslexic);
+        } else if (action === 'bionic') {
+          states.bionic = !states.bionic;
+          applyBionic(states.bionic);
+          setVal('bionic', states.bionic ? 'ligado' : 'desligado');
+          btn.classList.toggle('active', states.bionic);
+        } else if (action === 'tts') {
+          if (!('speechSynthesis' in window)) { setVal('tts', 'sem suporte'); return; }
+          if (states.tts) {
+            speechSynthesis.cancel();
+            states.tts = false;
+            setVal('tts', 'parado');
+            btn.classList.remove('active');
+          } else {
+            const text = document.getElementById('hero-lede').textContent.trim();
+            utter = new SpeechSynthesisUtterance(text);
+            utter.lang = 'pt-BR';
+            utter.rate = 1;
+            utter.onend = () => { states.tts = false; setVal('tts', 'parado'); btn.classList.remove('active'); };
+            speechSynthesis.speak(utter);
+            states.tts = true;
+            setVal('tts', 'lendo');
+            btn.classList.add('active');
+          }
+        } else if (action === 'libras') {
+          states.libras = !states.libras;
+          document.getElementById('libras-mock').style.display = states.libras ? 'block' : 'none';
+          setVal('libras', states.libras ? 'ligado' : 'desligado');
+          btn.classList.toggle('active', states.libras);
+        } else if (action === 'reset') {
+          fontIdx = 0; root.style.fontSize = '16px'; setVal('font', '100%');
+          states = { contrast: false, dark: false, dyslexic: false, bionic: false, tts: false, libras: false };
+          body.classList.remove('a11y-contrast', 'a11y-dyslexic', 'bionic');
+          root.removeAttribute('data-theme');
+          if (window.speechSynthesis) speechSynthesis.cancel();
+          applyBionic(false);
+          document.getElementById('libras-mock').style.display = 'none';
+          ['contrast','dark','dyslexic','bionic','libras'].forEach(k => setVal(k, 'desligado'));
+          setVal('tts', 'parado');
+          document.querySelectorAll('.a11y-btn').forEach(b => { if (b.dataset.action !== 'reset') b.classList.remove('active'); });
+        }
+      });
+    });
+
+    document.getElementById('libras-close').addEventListener('click', () => {
+      states.libras = false;
+      document.getElementById('libras-mock').style.display = 'none';
+      setVal('libras', 'desligado');
+      document.querySelector('[data-action="libras"]').classList.remove('active');
+    });
+
+    // Bionic reading: bold first half of each word in main paragraphs
+    const BIONIC_SELECTOR = 'main p, main li, main .lede';
+    const originalText = new Map();
+    function applyBionic(on) {
+      const els = document.querySelectorAll(BIONIC_SELECTOR);
+      if (on) {
+        document.body.classList.add('bionic');
+        els.forEach(el => {
+          if (!originalText.has(el)) originalText.set(el, el.innerHTML);
+          el.innerHTML = el.textContent.replace(/(\S+)/g, (w) => {
+            const half = Math.max(1, Math.ceil(w.length / 2));
+            return `<b>${w.slice(0, half)}</b>${w.slice(half)}`;
+          });
+        });
+      } else {
+        document.body.classList.remove('bionic');
+        els.forEach(el => { if (originalText.has(el)) el.innerHTML = originalText.get(el); });
+        originalText.clear();
+      }
+    }
+  </script>
+</body>
+</html>
