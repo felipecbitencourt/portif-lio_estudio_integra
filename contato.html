@@ -51,43 +51,46 @@
       </div>
 
       <div class="card" style="padding: 32px;">
+        <div class="small" data-fs-success style="display: none; margin-bottom: 12px; border: 1px solid #2f9e44; border-radius: 10px; background: rgba(47, 158, 68, 0.1); padding: 10px 12px; color: #2f9e44;"></div>
+        <div class="small" data-fs-error style="display: none; margin-bottom: 12px; border: 1px solid #e03131; border-radius: 10px; background: rgba(224, 49, 49, 0.1); padding: 10px 12px; color: #e03131;"></div>
         <form
-          action="https://formsubmit.co/felipe.cb2511@gmail.com"
+          id="contact-form"
+          action="https://formspree.io/f/meevboee"
           method="POST"
           style="display: grid; gap: 14px;"
         >
-          <input type="hidden" name="_subject" value="Novo contato - Estudio Integra" />
-          <input type="hidden" name="_cc" value="dudatessari@gmail.com" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
           <label>
             <span class="small">Nome</span>
-            <input required name="nome" type="text" style="width:100%; margin-top: 6px; border:1px solid var(--line-2); border-radius: 10px; background: var(--bg-elev); padding: 12px 14px; color: var(--ink);" />
+            <input required name="nome" type="text" data-fs-field style="width:100%; margin-top: 6px; border:1px solid var(--line-2); border-radius: 10px; background: var(--bg-elev); padding: 12px 14px; color: var(--ink);" />
+            <span class="small" data-fs-error="nome" style="display: block; margin-top: 6px; color: #e03131;"></span>
           </label>
 
           <label>
             <span class="small">E-mail</span>
-            <input required name="email" type="email" style="width:100%; margin-top: 6px; border:1px solid var(--line-2); border-radius: 10px; background: var(--bg-elev); padding: 12px 14px; color: var(--ink);" />
+            <input required name="email" type="email" data-fs-field style="width:100%; margin-top: 6px; border:1px solid var(--line-2); border-radius: 10px; background: var(--bg-elev); padding: 12px 14px; color: var(--ink);" />
+            <span class="small" data-fs-error="email" style="display: block; margin-top: 6px; color: #e03131;"></span>
           </label>
 
           <label>
             <span class="small">Empresa (opcional)</span>
-            <input name="empresa" type="text" style="width:100%; margin-top: 6px; border:1px solid var(--line-2); border-radius: 10px; background: var(--bg-elev); padding: 12px 14px; color: var(--ink);" />
+            <input name="empresa" type="text" data-fs-field style="width:100%; margin-top: 6px; border:1px solid var(--line-2); border-radius: 10px; background: var(--bg-elev); padding: 12px 14px; color: var(--ink);" />
+            <span class="small" data-fs-error="empresa" style="display: block; margin-top: 6px; color: #e03131;"></span>
           </label>
 
           <label>
             <span class="small">Mensagem</span>
-            <textarea required name="mensagem" rows="6" style="width:100%; resize: vertical; margin-top: 6px; border:1px solid var(--line-2); border-radius: 10px; background: var(--bg-elev); padding: 12px 14px; color: var(--ink);"></textarea>
+            <textarea required name="mensagem" rows="6" data-fs-field style="width:100%; resize: vertical; margin-top: 6px; border:1px solid var(--line-2); border-radius: 10px; background: var(--bg-elev); padding: 12px 14px; color: var(--ink);"></textarea>
+            <span class="small" data-fs-error="mensagem" style="display: block; margin-top: 6px; color: #e03131;"></span>
           </label>
 
           <div class="btn-row" style="margin-top: 6px;">
-            <button type="submit" class="btn">Enviar mensagem <span aria-hidden="true">→</span></button>
+            <button type="submit" class="btn" data-fs-submit-btn>Enviar mensagem <span aria-hidden="true">→</span></button>
             <a class="btn btn--ghost" href="mailto:felipe.cb2511@gmail.com,dudatessari@gmail.com">Ou abrir no e-mail</a>
           </div>
         </form>
         <p class="small" style="margin: 18px 0 0;">
-          Observação: na primeira submissão, o FormSubmit pode pedir confirmação do e-mail de destino.
+          Observação: mensagens enviadas por este formulário chegam pela caixa de entrada configurada no Formspree.
         </p>
       </div>
     </section>
@@ -102,6 +105,42 @@
     </div>
   </footer>
 
+  <script>
+    window.formspree = window.formspree || function () {
+      (formspree.q = formspree.q || []).push(arguments);
+    };
+    formspree("initForm", { formElement: "#contact-form", formId: "meevboee" });
+
+    const successBox = document.querySelector("[data-fs-success]");
+    const errorBox = document.querySelector("[data-fs-error]:not([data-fs-error='nome']):not([data-fs-error='email']):not([data-fs-error='empresa']):not([data-fs-error='mensagem'])");
+    const form = document.querySelector("#contact-form");
+
+    const applyFeedbackText = () => {
+      if (successBox && successBox.textContent.trim()) {
+        successBox.textContent = "Mensagem enviada com sucesso! Retornamos em até 1 dia útil.";
+        successBox.style.display = "block";
+      } else if (successBox) {
+        successBox.style.display = "none";
+      }
+
+      if (errorBox && errorBox.textContent.trim()) {
+        errorBox.textContent = "Nao foi possivel enviar agora. Confira os campos e tente novamente em instantes.";
+        errorBox.style.display = "block";
+      } else if (errorBox) {
+        errorBox.style.display = "none";
+      }
+    };
+
+    if (successBox) new MutationObserver(applyFeedbackText).observe(successBox, { childList: true, subtree: true, characterData: true });
+    if (errorBox) new MutationObserver(applyFeedbackText).observe(errorBox, { childList: true, subtree: true, characterData: true });
+    if (form) {
+      form.addEventListener("submit", () => {
+        if (successBox) successBox.style.display = "none";
+        if (errorBox) errorBox.style.display = "none";
+      });
+    }
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
