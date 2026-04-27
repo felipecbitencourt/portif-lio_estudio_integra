@@ -3,24 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pilar 02 · Tecnologias — Estudio Aprende</title>
+  <title>Pilar 02 · Tecnologias — Estudio Integra</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    @media (max-width: 980px) {
+      #stack-list { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    }
+    @media (max-width: 620px) {
+      #stack-list { grid-template-columns: 1fr !important; }
+    }
+  </style>
 </head>
 <body data-screen-label="02 Tecnologias">
   <header class="nav">
     <div class="shell nav-inner">
-      <a class="brand" href="index.html"><span class="brand-mark">EA</span>Estudio Aprende <i>/ portfolio</i></a>
+      <a class="brand" href="index.html"><span class="brand-mark">EI</span>Estudio Integra <i>/ portfolio</i></a>
       <nav aria-label="Navegação principal">
         <ul class="nav-links">
           <li><a href="index.html"><span class="num">00</span> Início</a></li>
           <li><a href="desenho-psico-pedagogico.html"><span class="num">01</span> Pedagogia</a></li>
           <li><a href="tecnologias.html" aria-current="page"><span class="num">02</span> Tecnologias</a></li>
           <li><a href="design.html"><span class="num">03</span> Design</a></li>
-          <li><a href="midias-recursos.html"><span class="num">04</span> Mídias</a></li>
+          <li><a href="midias-recursos.html"><span class="num">04</span> Recursos</a></li>
           <li><a href="acessibilidade.html"><span class="num">05</span> Acessibilidade</a></li>
+          <li><a href="produtos.html"><span class="num">06</span> Produtos</a></li>
         </ul>
       </nav>
-      <a href="index.html#contato" class="nav-cta">Conversar →</a>
+      <a href="contato.html" class="nav-cta">Conversar →</a>
       <button class="menu-toggle" aria-expanded="false">Menu</button>
     </div>
   </header>
@@ -28,7 +37,7 @@
   <main>
     <section class="shell pillar-hero">
       <div class="meta">
-        <span class="index-pill">Pilar 02 / 05</span>
+        <span class="index-pill">Pilar 02 / 06</span>
         <span class="eyebrow">Tecnologias</span>
       </div>
       <h1>Stack escolhida<br/>pelo <em>problema</em>,<br/>não pela <span class="accent">moda</span>.</h1>
@@ -42,8 +51,8 @@
       <span class="eyebrow">Stack — clique para detalhar</span>
       <h2 style="margin: 14px 0 32px;">Quatro <em>frentes</em><br/>técnicas, integradas.</h2>
 
-      <div id="stack-demo" style="display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: start;">
-        <div id="stack-list" style="display: grid; gap: 8px;"></div>
+      <div id="stack-demo" style="display: grid; grid-template-columns: 1fr; gap: 18px; align-items: start;">
+        <div id="stack-list" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px;"></div>
         <div id="stack-detail" class="card" style="padding: 36px; min-height: 360px;"></div>
       </div>
     </section>
@@ -103,7 +112,7 @@
 
     <section class="shell" style="padding-bottom: 64px;">
       <a class="pillar-card" href="design.html">
-        <div class="pillar-num">Próximo · 03 / 05</div>
+        <div class="pillar-num">Próximo · 03 / 06</div>
         <div class="pillar-body">
           <h3>Design</h3>
           <p>Como esse código vira interface clara, hierárquica e confortável para o aluno.</p>
@@ -116,7 +125,7 @@
   <footer class="foot">
     <div class="shell">
       <div class="foot-bottom" style="margin-top: 0; padding-top: 0; border-top: 0;">
-        <span>© 2026 Estudio Aprende · Pilar 02 / 05</span>
+        <span>© 2026 Estudio Integra · Pilar 02 / 06</span>
         <span><a href="index.html">← voltar ao início</a></span>
       </div>
     </div>
@@ -155,13 +164,13 @@
     let active = STACK[0].id;
     function render() {
       list.innerHTML = STACK.map((s, i) => `
-        <button data-id="${s.id}" type="button" style="text-align: left; padding: 18px 20px; border: 1px solid ${active===s.id?'var(--ink)':'var(--line)'}; background: ${active===s.id?'var(--ink)':'var(--paper)'}; color: ${active===s.id?'var(--bg)':'var(--ink)'}; border-radius: 14px; font: inherit; transition: all 180ms;">
+        <button data-id="${s.id}" type="button" style="text-align: left; padding: 14px 16px; border: 1px solid ${active===s.id?'var(--ink)':'var(--line)'}; background: ${active===s.id?'var(--ink)':'var(--paper)'}; color: ${active===s.id?'var(--bg)':'var(--ink)'}; border-radius: 14px; font: inherit; transition: all 180ms; min-height: 124px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
             <span style="font-family: var(--font-mono); font-size: 11px; opacity: 0.6;">0${i+1}</span>
             <span style="font-family: var(--font-mono); font-size: 11px; opacity: 0.6;">${active===s.id?'●':'○'}</span>
           </div>
-          <div style="font-family: var(--font-serif); font-size: 24px; margin-top: 6px;">${s.label}</div>
-          <div style="font-size: 13px; opacity: 0.7;">${s.sub}</div>
+          <div style="font-family: var(--font-serif); font-size: clamp(20px, 2vw, 24px); margin-top: 6px; line-height: 1.1;">${s.label}</div>
+          <div style="font-size: 13px; opacity: 0.75; margin-top: 4px;">${s.sub}</div>
         </button>`).join('');
       const cur = STACK.find(s => s.id === active);
       detail.innerHTML = cur.body;
