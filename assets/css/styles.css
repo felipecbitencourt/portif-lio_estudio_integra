@@ -447,6 +447,43 @@ small, .small { font-size: 12.5px; color: var(--ink-3); }
 /* Filete sempre visível no card de antecipação (sem esperar hover) */
 .pillar-card--next::before { opacity: 1; transform: scaleY(1); }
 .pillar-card--next .pillar-num { color: var(--pillar-color, var(--accent-deep)); }
+.pillar-card--next .pillar-num {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.pillar-card--next .next-label {
+  display: inline-block;
+  position: relative;
+  left: 0;
+  transform: rotate(90deg);
+  transform-origin: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: left 220ms var(--ease);
+}
+.pillar-card--next .next-indicator {
+  position: absolute;
+  left: calc(50% - 14px);
+  top: 50%;
+  transform: translateX(-50%) rotate(90deg) translateX(-8px);
+  transform-origin: center;
+  opacity: 0;
+  white-space: nowrap;
+  color: var(--pillar-color, var(--accent-deep));
+  transition: opacity 220ms var(--ease), transform 220ms var(--ease);
+}
+.pillar-card--next:hover .next-label {
+  left: 6px;
+}
+.pillar-card--next:hover .next-indicator,
+.pillar-card--next:focus-visible .next-indicator,
+.pillar-card--next:focus-within .next-indicator {
+  opacity: 1;
+  transform: translateX(-50%) rotate(90deg) translateX(0);
+}
 
 .pillar-num {
   font-family: var(--font-mono);
@@ -819,6 +856,25 @@ small, .small { font-size: 12.5px; color: var(--ink-3); }
   .split { grid-template-columns: 1fr; gap: 24px; }
   .split .label { position: static; }
   .pillar-card { grid-template-columns: 60px 1fr 44px; padding: 22px 0; gap: 16px; }
+  .pillar-card--next .pillar-num {
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    gap: 4px;
+  }
+  .pillar-card--next .next-label {
+    left: 0;
+    transform: none;
+  }
+  .pillar-card--next .next-indicator {
+    position: static;
+    transform: rotate(90deg);
+    transform-origin: left center;
+    opacity: 1;
+  }
+  .pillar-card--next:hover .next-label {
+    left: 0;
+  }
   .foot-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 

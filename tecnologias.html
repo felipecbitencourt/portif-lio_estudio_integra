@@ -7,6 +7,42 @@
   <title>Pilar 02 · Tecnologias — Estudio Integra</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <style>
+    @keyframes stackWiggle {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      30% {
+        transform: rotate(-1deg) translateY(-1px);
+      }
+
+      60% {
+        transform: rotate(1deg) translateY(-1px);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    .stack-option {
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+      transform-origin: 50% 80%;
+      will-change: transform;
+    }
+
+    .stack-option:hover {
+      animation: stackWiggle 340ms ease-in-out;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stack-option,
+      .stack-option:hover {
+        transition: none;
+        animation: none;
+      }
+    }
+
     @media (max-width: 980px) {
       #stack-list {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -151,7 +187,7 @@
 
     <section class="shell" style="padding-bottom: 64px;">
       <a class="pillar-card pillar-card--next pillar-card--next-03" href="design.html">
-        <div class="pillar-num">Próximo · 03 / 06</div>
+        <div class="pillar-num"><span class="next-label">Próximo</span><span class="next-indicator">03 / 06</span></div>
         <div class="pillar-body">
           <h3>Design</h3>
           <p>Como esse código vira interface clara, hierárquica e confortável para o aluno.</p>
@@ -205,7 +241,7 @@
     let active = STACK[0].id;
     function render() {
       list.innerHTML = STACK.map((s, i) => `
-        <button data-id="${s.id}" type="button" style="text-align: left; padding: 14px 16px; border: 1px solid ${active === s.id ? 'var(--ink)' : 'var(--line)'}; background: ${active === s.id ? 'var(--ink)' : 'var(--paper)'}; color: ${active === s.id ? 'var(--bg)' : 'var(--ink)'}; border-radius: 14px; font: inherit; transition: all 180ms; min-height: 124px;">
+        <button class="stack-option" data-id="${s.id}" type="button" style="text-align: left; padding: 14px 16px; border: 1px solid ${active === s.id ? 'var(--ink)' : 'var(--line)'}; background: ${active === s.id ? 'var(--ink)' : 'var(--paper)'}; color: ${active === s.id ? 'var(--bg)' : 'var(--ink)'}; border-radius: 14px; font: inherit; min-height: 124px;">
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
             <span style="font-family: var(--font-mono); font-size: 11px; opacity: 0.6;">0${i + 1}</span>
             <span style="font-family: var(--font-mono); font-size: 11px; opacity: 0.6;">${active === s.id ? '●' : '○'}</span>

@@ -6,6 +6,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pilar 04 · Recursos — Estudio Integra</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .quality-flashcards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .flashcard {
+      position: relative;
+      perspective: 1100px;
+      min-height: 210px;
+    }
+
+    .flashcard-btn {
+      width: 100%;
+      min-height: 210px;
+      border: 0;
+      border-radius: 16px;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      background: transparent;
+    }
+
+    .flashcard-inner {
+      display: block;
+      position: relative;
+      width: 100%;
+      min-height: 210px;
+      transform-style: preserve-3d;
+      transition: transform 520ms ease;
+    }
+
+    .flashcard.is-flipped .flashcard-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-face {
+      display: flex;
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
+      background: var(--paper);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .flashcard-face--front {
+      justify-content: space-between;
+    }
+
+    .flashcard-face--back {
+      transform: rotateY(180deg);
+      background: var(--accent);
+      border-color: var(--accent-deep);
+      color: var(--accent-ink);
+    }
+
+    .flashcard-face--back .flashcard-tip {
+      color: color-mix(in oklab, var(--accent-ink) 68%, var(--accent));
+    }
+
+    .flashcard-tip {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+    }
+
+    @media (max-width: 860px) {
+      .quality-flashcards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flashcard-inner {
+        transition: none;
+      }
+    }
+  </style>
 </head>
 
 <body data-screen-label="04 Recursos">
@@ -176,30 +264,78 @@
 
     <section class="shell" style="padding: clamp(56px, 8vw, 96px) 0;">
       <span class="eyebrow">Critérios de qualidade</span>
-      <h2 style="margin: 14px 0 32px;">O que <em>vetamos</em><br />na revisão.</h2>
-      <div class="grid-3">
-        <div class="card"><span class="num">Q.01</span>
-          <h3>Adequação didática</h3>
-          <p>Recurso justifica a presença pelo ganho de compreensão, priorizando a clareza sobre o apelo visual.</p>
-        </div>
-        <div class="card"><span class="num">Q.02</span>
-          <h3>Coerência narrativa</h3>
-          <p>Mídia integrada ao roteiro do módulo: sem elementos isolados ou informações redundantes.</p>
-        </div>
-        <div class="card"><span class="num">Q.03</span>
-          <h3>Qualidade técnica</h3>
-          <p>Audiovisual consistente entre módulos: nível de áudio, edição, timing.</p>
-        </div>
-        <div class="card"><span class="num">Q.04</span>
-          <h3>Economia de atenção</h3>
-          <p>Otimização do tempo de quem aprende: cada elemento deve agregar valor real à experiência.</p>
-        </div>
+      <h2 style="margin: 14px 0 32px;">O que <em>prezamos</em><br />na revisão.</h2>
+      <div class="quality-flashcards">
+        <article class="flashcard">
+          <button class="flashcard-btn" type="button" aria-label="Virar card Q.01 Adequação didática">
+            <div class="flashcard-inner">
+              <div class="flashcard-face flashcard-face--front">
+                <span class="num">Q.01</span>
+                <h3>Adequação didática</h3>
+                <span class="flashcard-tip">Clique para virar</span>
+              </div>
+              <div class="flashcard-face flashcard-face--back">
+                <span class="num">Q.01</span>
+                <p>Recurso justifica a presença pelo ganho de compreensão, priorizando a clareza sobre o apelo visual.</p>
+                <span class="flashcard-tip">Clique para voltar</span>
+              </div>
+            </div>
+          </button>
+        </article>
+        <article class="flashcard">
+          <button class="flashcard-btn" type="button" aria-label="Virar card Q.02 Coerência narrativa">
+            <div class="flashcard-inner">
+              <div class="flashcard-face flashcard-face--front">
+                <span class="num">Q.02</span>
+                <h3>Coerência narrativa</h3>
+                <span class="flashcard-tip">Clique para virar</span>
+              </div>
+              <div class="flashcard-face flashcard-face--back">
+                <span class="num">Q.02</span>
+                <p>Mídia integrada ao roteiro do módulo: sem elementos isolados ou informações redundantes.</p>
+                <span class="flashcard-tip">Clique para voltar</span>
+              </div>
+            </div>
+          </button>
+        </article>
+        <article class="flashcard">
+          <button class="flashcard-btn" type="button" aria-label="Virar card Q.03 Qualidade técnica">
+            <div class="flashcard-inner">
+              <div class="flashcard-face flashcard-face--front">
+                <span class="num">Q.03</span>
+                <h3>Qualidade técnica</h3>
+                <span class="flashcard-tip">Clique para virar</span>
+              </div>
+              <div class="flashcard-face flashcard-face--back">
+                <span class="num">Q.03</span>
+                <p>Audiovisual consistente entre módulos: nível de áudio, edição, timing.</p>
+                <span class="flashcard-tip">Clique para voltar</span>
+              </div>
+            </div>
+          </button>
+        </article>
+        <article class="flashcard">
+          <button class="flashcard-btn" type="button" aria-label="Virar card Q.04 Economia de atenção">
+            <div class="flashcard-inner">
+              <div class="flashcard-face flashcard-face--front">
+                <span class="num">Q.04</span>
+                <h3>Economia de atenção</h3>
+                <span class="flashcard-tip">Clique para virar</span>
+              </div>
+              <div class="flashcard-face flashcard-face--back">
+                <span class="num">Q.04</span>
+                <p>Otimização do tempo de quem aprende: cada elemento deve agregar valor real à experiência.</p>
+                <span class="flashcard-tip">Clique para voltar</span>
+              </div>
+            </div>
+          </button>
+        </article>
       </div>
     </section>
 
     <section class="shell" style="padding-bottom: 64px;">
       <a class="pillar-card pillar-card--next pillar-card--next-05" href="acessibilidade.html">
-        <div class="pillar-num">Próximo · 05 / 06</div>
+        <div class="pillar-num"><span class="next-label">Próximo</span><span class="next-indicator">05 / 06</span></div>
         <div class="pillar-body">
           <h3>Acessibilidade</h3>
           <p>Mídias e recursos pensados para chegar a mais pessoas — com o painel ao vivo na próxima página.</p>
@@ -221,6 +357,14 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    document.querySelectorAll('.flashcard').forEach((card) => {
+      const button = card.querySelector('.flashcard-btn');
+      button.addEventListener('click', () => {
+        card.classList.toggle('is-flipped');
+      });
+    });
+  </script>
 </body>
 
 </html>
