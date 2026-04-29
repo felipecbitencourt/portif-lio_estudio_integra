@@ -115,7 +115,7 @@
         <span class="index-pill">Pilar 05 / 06</span>
         <span class="eyebrow">Acessibilidade</span>
       </div>
-      <h1>Acessibilidade<br />é <em>critério</em>,<br />não <span class="accent">extra</span>.</h1>
+      <h1 id="i18n-hero-title">Acessibilidade<br />é <em>critério</em>,<br />não <span class="accent">extra</span>.</h1>
       <p class="lede" id="hero-lede">
         Garantir que os materiais possam ser utilizados por mais pessoas, em diferentes condições, com autonomia.
         Tratamos acessibilidade como critério técnico e responsabilidade profissional.
@@ -124,43 +124,53 @@
 
     <!-- DEMO ao vivo -->
     <section class="shell" style="padding: clamp(40px, 6vw, 80px) 0;">
-      <span class="eyebrow">Demonstração · Painel ao vivo</span>
-      <h2 style="margin: 14px 0 8px;">Aplique <em>nesta página</em>, agora.</h2>
-      <p class="lede" style="margin-bottom: 32px;">Os ajustes abaixo são amostras do que entregamos modularmente em
+      <span class="eyebrow" data-i18n="demoEyebrow">Demonstração · Painel ao vivo</span>
+      <h2 id="i18n-demo-title" style="margin: 14px 0 8px;">Aplique <em>nesta página</em>, agora.</h2>
+      <p class="lede" id="i18n-demo-lede" style="margin-bottom: 32px;">Os ajustes abaixo são amostras do que entregamos modularmente em
         projetos. Toque para ativar e veja o efeito imediato no conteúdo desta página.</p>
 
       <div id="a11y-panel" class="card" style="padding: 32px;">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
-          <button class="a11y-btn" data-action="font" data-state="0" type="button">
-            <span class="lbl">Tamanho de fonte</span>
-            <span class="val" data-val="font">100%</span>
-          </button>
+          <div class="a11y-btn a11y-control">
+            <span class="lbl" data-i18n="fontLabel">Tamanho de fonte</span>
+            <div class="font-controls">
+              <span class="val" data-val="font">100%</span>
+              <div class="font-stepper">
+                <button class="font-step" data-action="font-down" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+                <button class="font-step" data-action="font-up" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+              </div>
+            </div>
+          </div>
           <button class="a11y-btn" data-action="contrast" type="button">
-            <span class="lbl">Alto contraste</span>
+            <span class="lbl" data-i18n="contrastLabel">Alto contraste</span>
             <span class="val" data-val="contrast">desligado</span>
           </button>
           <button class="a11y-btn" data-action="dark" type="button">
-            <span class="lbl">Modo escuro</span>
+            <span class="lbl" data-i18n="darkLabel">Modo escuro</span>
             <span class="val" data-val="dark">desligado</span>
           </button>
           <button class="a11y-btn" data-action="dyslexic" type="button">
-            <span class="lbl">Fonte assistiva</span>
+            <span class="lbl" data-i18n="dyslexicLabel">Fonte assistiva</span>
             <span class="val" data-val="dyslexic">desligado</span>
           </button>
           <button class="a11y-btn" data-action="tts" type="button">
-            <span class="lbl">Ler em voz alta</span>
+            <span class="lbl" data-i18n="ttsLabel">Ler em voz alta</span>
             <span class="val" data-val="tts">parado</span>
           </button>
           <button class="a11y-btn" data-action="libras" type="button">
             <span class="lbl">VLibras</span>
             <span class="val" data-val="libras">desligado</span>
           </button>
+          <button class="a11y-btn" data-action="lang" type="button">
+            <span class="lbl" data-i18n="langLabel">Idioma</span>
+            <span class="val" data-val="lang">PT</span>
+          </button>
           <button class="a11y-btn" data-action="reset" type="button" style="background: var(--ink); color: var(--bg);">
-            <span class="lbl" style="color: color-mix(in oklab, var(--bg) 65%, var(--ink));">Restaurar tudo</span>
+            <span class="lbl" data-i18n="resetLabel" style="color: color-mix(in oklab, var(--bg) 65%, var(--ink));">Restaurar tudo</span>
             <span class="val">↺</span>
           </button>
         </div>
-        <p class="small" style="margin-top: 18px;">Os recursos podem ser implementados de forma modular conforme o
+        <p class="small" id="i18n-panel-note" style="margin-top: 18px;">Os recursos podem ser implementados de forma modular conforme o
           escopo do projeto.</p>
       </div>
 
@@ -203,6 +213,37 @@
         font-size: 11px;
         letter-spacing: 0.06em;
         opacity: 0.7;
+      }
+
+      .a11y-control {
+        cursor: default;
+      }
+
+      .font-stepper {
+        display: inline-flex;
+        gap: 8px;
+      }
+
+      .font-controls {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .font-step {
+        border: 1px solid var(--line-2);
+        background: var(--paper);
+        color: var(--ink);
+        border-radius: 10px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        padding: 6px 10px;
+        line-height: 1;
+      }
+
+      .font-step:hover {
+        border-color: var(--ink);
       }
 
       .a11y-btn.active .val {
@@ -273,6 +314,19 @@
         <div class="card"><span class="num">R.04</span>
           <h3>Fonte para dislexia</h3>
           <p>OpenDyslexic ou alternativas legíveis como toggle.</p>
+        </div>
+        <div class="card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px;">
+          <svg viewBox="0 0 120 120" width="132" height="132" aria-hidden="true">
+            <circle cx="60" cy="60" r="54" fill="none" stroke="var(--ink)" stroke-width="3.5" />
+            <circle cx="60" cy="34" r="11" fill="var(--pillar-05)" stroke="var(--ink)" stroke-width="3.5" />
+            <circle cx="20" cy="50" r="6.5" fill="var(--pillar-05)" stroke="var(--ink)" stroke-width="3.5" />
+            <circle cx="100" cy="50" r="6.5" fill="var(--pillar-05)" stroke="var(--ink)" stroke-width="3.5" />
+            <circle cx="34" cy="98" r="6.5" fill="var(--pillar-05)" stroke="var(--ink)" stroke-width="3.5" />
+            <circle cx="86" cy="98" r="6.5" fill="var(--pillar-05)" stroke="var(--ink)" stroke-width="3.5" />
+            <path d="M20 50L60 64L100 50" fill="none" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round" />
+            <path d="M60 64L34 98" fill="none" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round" />
+            <path d="M60 64L86 98" fill="none" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round" />
+          </svg>
         </div>
         <div class="card"><span class="num">R.05</span>
           <h3>Leitura em voz alta</h3>
@@ -379,12 +433,154 @@
       { label: '130%', scale: 1.3 },
       { label: '150%', scale: 1.5 }
     ];
+    const LANGS = ['pt', 'en', 'es'];
+    const LANG_LABEL = { pt: 'PT', en: 'EN', es: 'ES' };
+    const TTS_LANG = { pt: 'pt-BR', en: 'en-US', es: 'es-ES' };
+    const VOICE_HINTS = [
+      'natural',
+      'neural',
+      'enhanced',
+      'premium',
+      'google',
+      'microsoft',
+      'apple'
+    ];
+    const I18N = {
+      pt: {
+        on: 'ligado',
+        off: 'desligado',
+        stopped: 'parado',
+        reading: 'lendo',
+        noSupport: 'sem suporte',
+        demoEyebrow: 'Demonstração · Painel ao vivo',
+        demoTitle: 'Aplique <em>nesta página</em>, agora.',
+        demoLede: 'Os ajustes abaixo são amostras do que entregamos modularmente em projetos. Toque para ativar e veja o efeito imediato no conteúdo desta página.',
+        heroTitle: 'Acessibilidade<br />é <em>critério</em>,<br />não <span class="accent">extra</span>.',
+        heroLede: 'Garantir que os materiais possam ser utilizados por mais pessoas, em diferentes condições, com autonomia. Tratamos acessibilidade como critério técnico e responsabilidade profissional.',
+        panelNote: 'Os recursos podem ser implementados de forma modular conforme o escopo do projeto.',
+        fontLabel: 'Tamanho de fonte',
+        contrastLabel: 'Alto contraste',
+        darkLabel: 'Modo escuro',
+        dyslexicLabel: 'Fonte assistiva',
+        ttsLabel: 'Ler em voz alta',
+        langLabel: 'Idioma',
+        resetLabel: 'Restaurar tudo'
+      },
+      en: {
+        on: 'on',
+        off: 'off',
+        stopped: 'stopped',
+        reading: 'reading',
+        noSupport: 'not supported',
+        demoEyebrow: 'Demo · Live panel',
+        demoTitle: 'Apply it <em>on this page</em>, now.',
+        demoLede: 'The controls below are samples of modular accessibility features we can deliver in projects. Toggle them and see the effect immediately on this page.',
+        heroTitle: 'Accessibility<br />is a <em>criterion</em>,<br />not an <span class="accent">extra</span>.',
+        heroLede: 'We ensure materials can be used by more people, in different conditions, with autonomy. Accessibility is treated as a technical criterion and professional responsibility.',
+        panelNote: 'Features can be implemented modularly according to project scope.',
+        fontLabel: 'Font size',
+        contrastLabel: 'High contrast',
+        darkLabel: 'Dark mode',
+        dyslexicLabel: 'Assistive font',
+        ttsLabel: 'Read aloud',
+        langLabel: 'Language',
+        resetLabel: 'Reset all'
+      },
+      es: {
+        on: 'encendido',
+        off: 'apagado',
+        stopped: 'detenido',
+        reading: 'leyendo',
+        noSupport: 'sin soporte',
+        demoEyebrow: 'Demostración · Panel en vivo',
+        demoTitle: 'Aplícalo <em>en esta página</em>, ahora.',
+        demoLede: 'Los controles a continuación son muestras de funciones modulares de accesibilidad que entregamos en proyectos. Actívalos y mira el efecto inmediato en esta página.',
+        heroTitle: 'La accesibilidad<br />es un <em>criterio</em>,<br />no un <span class="accent">extra</span>.',
+        heroLede: 'Garantizamos que los materiales puedan ser usados por más personas, en distintas condiciones, con autonomía. Tratamos la accesibilidad como criterio técnico y responsabilidad profesional.',
+        panelNote: 'Los recursos pueden implementarse de forma modular según el alcance del proyecto.',
+        fontLabel: 'Tamaño de fuente',
+        contrastLabel: 'Alto contraste',
+        darkLabel: 'Modo oscuro',
+        dyslexicLabel: 'Fuente asistiva',
+        ttsLabel: 'Lectura en voz alta',
+        langLabel: 'Idioma',
+        resetLabel: 'Restaurar todo'
+      }
+    };
     let fontIdx = 0;
+    let currentLang = 'pt';
     let states = { contrast: false, dark: false, dyslexic: false, tts: false, libras: false };
     let ttsQueue = [];
     let ttsIndex = 0;
+    let ttsVoices = [];
 
     function setVal(key, val) { document.querySelector(`[data-val="${key}"]`).textContent = val; }
+    function t(key) { return I18N[currentLang][key] || I18N.pt[key] || key; }
+
+    function scoreVoice(voice, langPrefix) {
+      let score = 0;
+      const voiceLang = (voice.lang || '').toLowerCase();
+      const target = langPrefix.toLowerCase();
+      const name = (voice.name || '').toLowerCase();
+
+      if (voiceLang === target) score += 90;
+      else if (voiceLang.startsWith(`${target}-`)) score += 80;
+      else if (voiceLang.startsWith(target)) score += 70;
+      else score -= 50;
+
+      if (voice.default) score += 25;
+      if (voice.localService) score += 8;
+      VOICE_HINTS.forEach((hint, idx) => {
+        if (name.includes(hint)) score += (VOICE_HINTS.length - idx) * 3;
+      });
+
+      return score;
+    }
+
+    function getPreferredVoice(lang) {
+      if (!('speechSynthesis' in window)) return null;
+      const langPrefix = (TTS_LANG[lang] || 'pt-BR').slice(0, 2).toLowerCase();
+      const candidates = ttsVoices.filter(v => (v.lang || '').toLowerCase().startsWith(langPrefix));
+      const pool = candidates.length ? candidates : ttsVoices;
+      if (!pool.length) return null;
+
+      let best = pool[0];
+      let bestScore = scoreVoice(best, langPrefix);
+      for (let i = 1; i < pool.length; i++) {
+        const score = scoreVoice(pool[i], langPrefix);
+        if (score > bestScore) {
+          best = pool[i];
+          bestScore = score;
+        }
+      }
+      return best;
+    }
+
+    function refreshVoices() {
+      if (!('speechSynthesis' in window)) return;
+      ttsVoices = speechSynthesis.getVoices() || [];
+    }
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = TTS_LANG[lang] || 'pt-BR';
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.dataset.i18n;
+        const val = t(key);
+        if (val) el.textContent = val;
+      });
+      document.getElementById('i18n-hero-title').innerHTML = t('heroTitle');
+      document.getElementById('hero-lede').textContent = t('heroLede');
+      document.getElementById('i18n-demo-title').innerHTML = t('demoTitle');
+      document.getElementById('i18n-demo-lede').textContent = t('demoLede');
+      document.getElementById('i18n-panel-note').textContent = t('panelNote');
+      setVal('lang', LANG_LABEL[lang]);
+      setVal('contrast', states.contrast ? t('on') : t('off'));
+      setVal('dark', states.dark ? t('on') : t('off'));
+      setVal('dyslexic', states.dyslexic ? t('on') : t('off'));
+      setVal('libras', states.libras ? t('on') : t('off'));
+      setVal('tts', states.tts ? t('reading') : t('stopped'));
+    }
 
     function applyFontScale(scale) {
       if (scale === 1) body.style.removeProperty('--a11y-scale');
@@ -401,7 +597,7 @@
       ttsQueue = [];
       ttsIndex = 0;
       states.tts = false;
-      setVal('tts', 'parado');
+      setVal('tts', t('stopped'));
       const btn = document.querySelector('[data-action="tts"]');
       if (btn) btn.classList.remove('active');
     }
@@ -412,7 +608,9 @@
       el.classList.add('a11y-reading');
       el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       const u = new SpeechSynthesisUtterance(el.textContent.trim());
-      u.lang = 'pt-BR';
+      const preferredVoice = getPreferredVoice(currentLang);
+      if (preferredVoice) u.voice = preferredVoice;
+      u.lang = TTS_LANG[currentLang] || 'pt-BR';
       u.rate = 1;
       const advance = () => {
         el.classList.remove('a11y-reading');
@@ -425,6 +623,7 @@
     }
 
     function startTTS() {
+      refreshVoices();
       const nodes = document.querySelectorAll('main h1, main h2, main h3, main .lede, main p, main li');
       ttsQueue = Array.from(nodes).filter(el => {
         if (el.closest('.foot')) return false;
@@ -435,7 +634,7 @@
       });
       ttsIndex = 0;
       states.tts = true;
-      setVal('tts', 'lendo');
+      setVal('tts', t('reading'));
       document.querySelector('[data-action="tts"]').classList.add('active');
       speakNext();
     }
@@ -449,40 +648,55 @@
       else if (!on && isOpen) accessBtn.click();
     }
 
-    document.querySelectorAll('.a11y-btn').forEach(btn => {
+    function applyFontStep(action) {
+      fontIdx = action === 'font-up'
+        ? Math.min(FONT_STEPS.length - 1, fontIdx + 1)
+        : Math.max(0, fontIdx - 1);
+      applyFontScale(FONT_STEPS[fontIdx].scale);
+      setVal('font', FONT_STEPS[fontIdx].label);
+      document.querySelector('[data-action="font-up"]').classList.toggle('active', fontIdx > 0);
+      document.querySelector('[data-action="font-down"]').classList.toggle('active', fontIdx > 0);
+    }
+
+    document.querySelectorAll('.font-step').forEach((btn) => {
+      btn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        applyFontStep(btn.dataset.action);
+      });
+    });
+
+    document.querySelectorAll('.a11y-btn[data-action]').forEach(btn => {
       btn.addEventListener('click', () => {
         const action = btn.dataset.action;
-        if (action === 'font') {
-          fontIdx = (fontIdx + 1) % FONT_STEPS.length;
-          applyFontScale(FONT_STEPS[fontIdx].scale);
-          setVal('font', FONT_STEPS[fontIdx].label);
-          btn.classList.toggle('active', fontIdx > 0);
-        } else if (action === 'contrast') {
+        if (action === 'contrast') {
           states.contrast = !states.contrast;
           body.classList.toggle('a11y-contrast', states.contrast);
-          if (states.contrast) { states.dark = false; root.removeAttribute('data-theme'); setVal('dark', 'desligado'); document.querySelector('[data-action="dark"]').classList.remove('active'); }
-          setVal('contrast', states.contrast ? 'ligado' : 'desligado');
+          if (states.contrast) { states.dark = false; root.removeAttribute('data-theme'); setVal('dark', t('off')); document.querySelector('[data-action="dark"]').classList.remove('active'); }
+          setVal('contrast', states.contrast ? t('on') : t('off'));
           btn.classList.toggle('active', states.contrast);
         } else if (action === 'dark') {
           states.dark = !states.dark;
-          if (states.dark) { root.setAttribute('data-theme', 'dark'); body.classList.remove('a11y-contrast'); states.contrast = false; setVal('contrast', 'desligado'); document.querySelector('[data-action="contrast"]').classList.remove('active'); }
+          if (states.dark) { root.setAttribute('data-theme', 'dark'); body.classList.remove('a11y-contrast'); states.contrast = false; setVal('contrast', t('off')); document.querySelector('[data-action="contrast"]').classList.remove('active'); }
           else { root.removeAttribute('data-theme'); }
-          setVal('dark', states.dark ? 'ligado' : 'desligado');
+          setVal('dark', states.dark ? t('on') : t('off'));
           btn.classList.toggle('active', states.dark);
         } else if (action === 'dyslexic') {
           states.dyslexic = !states.dyslexic;
           body.classList.toggle('a11y-dyslexic', states.dyslexic);
-          setVal('dyslexic', states.dyslexic ? 'ligado' : 'desligado');
+          setVal('dyslexic', states.dyslexic ? t('on') : t('off'));
           btn.classList.toggle('active', states.dyslexic);
         } else if (action === 'tts') {
-          if (!('speechSynthesis' in window)) { setVal('tts', 'sem suporte'); return; }
+          if (!('speechSynthesis' in window)) { setVal('tts', t('noSupport')); return; }
           if (states.tts) stopTTS();
           else startTTS();
         } else if (action === 'libras') {
           states.libras = !states.libras;
           toggleLibras(states.libras);
-          setVal('libras', states.libras ? 'ligado' : 'desligado');
+          setVal('libras', states.libras ? t('on') : t('off'));
           btn.classList.toggle('active', states.libras);
+        } else if (action === 'lang') {
+          const idx = LANGS.indexOf(currentLang);
+          applyLanguage(LANGS[(idx + 1) % LANGS.length]);
         } else if (action === 'reset') {
           fontIdx = 0; applyFontScale(1); setVal('font', '100%');
           stopTTS();
@@ -490,12 +704,18 @@
           states = { contrast: false, dark: false, dyslexic: false, tts: false, libras: false };
           body.classList.remove('a11y-contrast', 'a11y-dyslexic');
           root.removeAttribute('data-theme');
-          ['contrast', 'dark', 'dyslexic', 'libras'].forEach(k => setVal(k, 'desligado'));
-          setVal('tts', 'parado');
-          document.querySelectorAll('.a11y-btn').forEach(b => { if (b.dataset.action !== 'reset') b.classList.remove('active'); });
+          document.querySelectorAll('[data-action="font-up"], [data-action="font-down"]').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.a11y-btn').forEach(b => { if (b.dataset.action && b.dataset.action !== 'reset') b.classList.remove('active'); });
+          applyLanguage('pt');
         }
       });
     });
+
+    applyLanguage('pt');
+    refreshVoices();
+    if ('speechSynthesis' in window) {
+      speechSynthesis.onvoiceschanged = refreshVoices;
+    }
   </script>
 </body>
 

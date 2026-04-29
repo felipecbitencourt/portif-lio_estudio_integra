@@ -6,8 +6,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pilar 06 · Produtos — Estudio Integra</title>
   <meta name="description"
-    content="Produtos educacionais que desenvolvemos: curso SCORM, e-book, cartilhas digitais, catálogos de ferramentas digitais, games e consultoria." />
+    content="Produtos educacionais e digitais que desenvolvemos: curso SCORM, e-book, cartilhas, catálogos, games, consultoria, sites, dashboards e menus de acessibilidade." />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    #products-grid .card {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      transition: border-color 240ms var(--ease), transform 180ms var(--ease);
+    }
+
+    #products-grid .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: var(--accent);
+      transform: scale(0);
+      transform-origin: center;
+      transition: transform 360ms var(--ease);
+      border-radius: inherit;
+    }
+
+    #products-grid .card .num,
+    #products-grid .card h3,
+    #products-grid .card p {
+      position: relative;
+      z-index: 1;
+      transition: color 260ms var(--ease);
+    }
+
+    #products-grid .card:hover {
+      border-color: var(--accent-deep);
+      transform: translateY(-2px);
+    }
+
+    #products-grid .card:hover::after {
+      transform: scale(1);
+    }
+
+    #products-grid .card:hover .num,
+    #products-grid .card:hover h3,
+    #products-grid .card:hover p {
+      color: var(--accent-ink);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #products-grid .card::after {
+        transition-duration: 0.01ms;
+      }
+    }
+
+    #next-contact-card {
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      border-radius: var(--radius-md);
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    #next-contact-card .pillar-num,
+    #next-contact-card .pillar-body h3,
+    #next-contact-card .pillar-body p {
+      color: var(--bg);
+    }
+
+    #next-contact-card .pillar-arrow {
+      border-color: color-mix(in oklab, var(--bg) 30%, var(--ink));
+      color: var(--bg);
+    }
+
+    #next-contact-card:hover::after {
+      opacity: 0;
+    }
+
+    #next-contact-card:hover .pillar-arrow {
+      background: var(--bg);
+      border-color: var(--bg);
+      color: var(--ink);
+    }
+  </style>
 </head>
 
 <body data-screen-label="06 Produtos">
@@ -46,8 +124,8 @@
 
     <section class="shell" style="padding: clamp(40px, 6vw, 80px) 0;">
       <span class="eyebrow">Portfólio de entregas</span>
-      <h2 style="margin: 14px 0 32px;">Seis frentes de produto<br />para o seu contexto.</h2>
-      <div class="grid-3">
+      <h2 style="margin: 14px 0 32px;">Nove frentes de produto<br />para o seu contexto.</h2>
+      <div id="products-grid" class="grid-3">
         <article class="card">
           <span class="num">P.01</span>
           <h3>Curso SCORM</h3>
@@ -77,6 +155,21 @@
           <span class="num">P.06</span>
           <h3>Consultoria</h3>
           <p>Diagnóstico, estratégia e plano de implementação para elevar maturidade educacional digital.</p>
+        </article>
+        <article class="card">
+          <span class="num">P.07</span>
+          <h3>Sites</h3>
+          <p>Sites institucionais e páginas especiais com foco em clareza, desempenho e experiência responsiva.</p>
+        </article>
+        <article class="card">
+          <span class="num">P.08</span>
+          <h3>Dashboards</h3>
+          <p>Painéis para acompanhamento de indicadores, leitura rápida de dados e apoio à tomada de decisão.</p>
+        </article>
+        <article class="card">
+          <span class="num">P.09</span>
+          <h3>Menus de acessibilidade</h3>
+          <p>Controles de acessibilidade na interface com ajustes como contraste, fonte, leitura em voz alta e idioma.</p>
         </article>
       </div>
     </section>
@@ -112,7 +205,7 @@
     </section>
 
     <section class="shell" style="padding-bottom: 64px;">
-      <a class="pillar-card pillar-card--next pillar-card--next-brand" href="contato.html">
+      <a id="next-contact-card" class="pillar-card pillar-card--next pillar-card--next-brand" href="contato.html">
         <div class="pillar-num">Próximo · Contato</div>
         <div class="pillar-body">
           <h3>Vamos desenhar seu produto?</h3>

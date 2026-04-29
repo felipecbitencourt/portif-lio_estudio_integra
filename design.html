@@ -196,38 +196,74 @@
 
     function update() {
       const t = slider.value / 100;
+      const isFlat = t < 0.2;
       // Eyebrow: monocromático -> letter-spaced colored kicker
-      eyebrow.style.fontSize = `${lerp(13, 11, t)}px`;
-      eyebrow.style.letterSpacing = `${lerp(0, 0.14, t)}em`;
-      eyebrow.style.textTransform = t > 0.3 ? 'uppercase' : 'none';
-      eyebrow.style.color = t > 0.3 ? 'var(--ink-3)' : 'var(--ink-2)';
+      eyebrow.style.fontSize = isFlat ? '16px' : `${lerp(13, 12, t)}px`;
+      eyebrow.style.letterSpacing = isFlat ? '0' : `${lerp(0, 0.14, t)}em`;
+      eyebrow.style.textTransform = isFlat ? 'none' : (t > 0.3 ? 'uppercase' : 'none');
+      eyebrow.style.color = isFlat ? 'var(--ink-2)' : (t > 0.3 ? 'var(--ink-3)' : 'var(--ink-2)');
+      eyebrow.style.fontFamily = 'var(--font-sans)';
+      eyebrow.style.fontWeight = isFlat ? '400' : (t > 0.6 ? '600' : '500');
+      eyebrow.style.display = t > 0.6 ? 'inline-flex' : 'block';
+      eyebrow.style.alignItems = t > 0.6 ? 'center' : 'initial';
+      eyebrow.style.width = t > 0.6 ? 'fit-content' : 'auto';
+      eyebrow.style.background = t > 0.6 ? 'var(--accent)' : 'transparent';
+      eyebrow.style.color = t > 0.6 ? 'var(--accent-ink)' : eyebrow.style.color;
+      eyebrow.style.padding = t > 0.6 ? '6px 12px' : '0';
+      eyebrow.style.borderRadius = t > 0.6 ? '999px' : '0';
       // Title: small sans -> large serif
       const titleSize = lerp(16, 44, t);
-      title.style.fontSize = `${titleSize}px`;
-      title.style.fontFamily = t > 0.5 ? 'var(--font-serif)' : 'var(--font-sans)';
+      title.style.fontSize = isFlat ? '16px' : `${titleSize}px`;
+      title.style.fontFamily = isFlat ? 'var(--font-sans)' : (t > 0.5 ? 'var(--font-serif)' : 'var(--font-sans)');
       title.style.fontWeight = t > 0.5 ? '400' : '400';
-      title.style.lineHeight = `${lerp(1.5, 1.05, t)}`;
-      title.style.color = 'var(--ink)';
-      title.style.marginTop = `${lerp(4, 16, t)}px`;
-      title.style.marginBottom = `${lerp(4, 14, t)}px`;
+      title.style.lineHeight = isFlat ? '1.5' : `${lerp(1.5, 1.05, t)}`;
+      title.style.color = isFlat ? 'var(--ink-2)' : 'var(--ink)';
+      title.style.marginTop = isFlat ? '4px' : `${lerp(4, 16, t)}px`;
+      title.style.marginBottom = isFlat ? '4px' : `${lerp(4, 14, t)}px`;
       // Desc: same -> smaller, muted, narrower
-      desc.style.fontSize = `${lerp(16, 15, t)}px`;
-      desc.style.color = t > 0.4 ? 'var(--ink-3)' : 'var(--ink-2)';
-      desc.style.maxWidth = t > 0.5 ? '56ch' : 'none';
-      desc.style.lineHeight = `${lerp(1.4, 1.55, t)}`;
+      desc.style.fontSize = isFlat ? '16px' : `${lerp(16, 15, t)}px`;
+      desc.style.color = isFlat ? 'var(--ink-2)' : (t > 0.4 ? 'var(--ink-3)' : 'var(--ink-2)');
+      desc.style.maxWidth = isFlat ? 'none' : (t > 0.5 ? '56ch' : 'none');
+      desc.style.lineHeight = isFlat ? '1.5' : `${lerp(1.4, 1.55, t)}`;
       // Meta: same -> mono pill
-      meta.style.fontSize = `${lerp(16, 12, t)}px`;
-      meta.style.fontFamily = t > 0.5 ? 'var(--font-mono)' : 'var(--font-sans)';
-      meta.style.color = 'var(--ink-4)';
-      meta.style.marginTop = `${lerp(4, 18, t)}px`;
-      meta.style.letterSpacing = `${lerp(0, 0.05, t)}em`;
+      meta.style.fontSize = isFlat ? '16px' : `${lerp(16, 12.5, t)}px`;
+      meta.style.fontFamily = isFlat ? 'var(--font-sans)' : (t > 0.5 ? 'var(--font-mono)' : 'var(--font-sans)');
+      meta.style.color = isFlat ? 'var(--ink-2)' : (t > 0.6 ? 'var(--accent-ink)' : 'var(--ink-4)');
+      meta.style.marginTop = isFlat ? '4px' : `${lerp(4, 18, t)}px`;
+      meta.style.letterSpacing = isFlat ? '0' : `${lerp(0, 0.05, t)}em`;
+      meta.style.display = t > 0.6 ? 'inline-flex' : 'block';
+      meta.style.width = t > 0.6 ? 'fit-content' : 'auto';
+      meta.style.background = t > 0.6 ? 'var(--accent)' : 'transparent';
+      meta.style.padding = t > 0.6 ? '7px 12px' : '0';
+      meta.style.borderRadius = t > 0.6 ? '999px' : '0';
       // CTA spacing
-      cta.style.marginTop = `${lerp(12, 28, t)}px`;
+      cta.style.marginTop = isFlat ? '12px' : `${lerp(12, 28, t)}px`;
       const btn = cta.querySelector('button');
-      if (t > 0.6) {
-        btn.classList.remove('btn--ghost');
+      if (isFlat) {
+        btn.classList.remove('btn', 'btn--ghost');
+        btn.style.border = '0';
+        btn.style.background = 'transparent';
+        btn.style.padding = '0';
+        btn.style.borderRadius = '0';
+        btn.style.color = 'var(--ink-2)';
+        btn.style.fontSize = '16px';
+        btn.style.fontWeight = '400';
       } else {
-        btn.classList.add('btn--ghost');
+        btn.classList.add('btn');
+        btn.style.border = '';
+        btn.style.background = '';
+        btn.style.padding = '';
+        btn.style.borderRadius = '';
+        btn.style.color = '';
+        btn.style.fontSize = '';
+        btn.style.fontWeight = '';
+      }
+      if (!isFlat) {
+        if (t > 0.6) {
+          btn.classList.remove('btn--ghost');
+        } else {
+          btn.classList.add('btn--ghost');
+        }
       }
       stateLabel.textContent = t < 0.15 ? 'sem hierarquia' : t < 0.5 ? 'em transição' : t < 0.85 ? 'hierarquia clara' : 'sistema completo';
     }
